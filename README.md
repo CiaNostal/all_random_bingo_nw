@@ -1,7 +1,7 @@
-サモランオールランダムビンゴ
+サモランNWオールランダムビンゴ
 ====
 
-サーモンランのオールランダムで引いたブキでビンゴをする遊びです。
+サーモンランNWのオールランダムで引いたブキでビンゴをする遊びです。
 
 ## 説明
 
@@ -22,11 +22,11 @@
 ## 閲覧
 
 以下のURLから閲覧できます。  
-[https://cianostal.github.io/all_random_bingo/](https://cianostal.github.io/all_random_bingo/)
+[https://cianostal.github.io/all_random_bingo_nw/](https://cianostal.github.io/all_random_bingo_nw/)
 
 ## その他
 
-GungeeSpla氏作成の[赤イクラビンゴ](https://gungeespla.github.io/ikura_bingo/)([GitHub](https://github.com/GungeeSpla/ikura_bingo))をフォークして作成しました。
+素材は[GungeeSpla氏](https://twitter.com/GungeeSpla)からお借りしました([ツイート](https://twitter.com/GungeeSpla/status/1618991301831307265))
 
 著作権はGungeeSpla氏に帰属します。
 Copyright (c) 2020 GungeeSpla
