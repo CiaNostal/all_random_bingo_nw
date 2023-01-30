@@ -28,9 +28,6 @@
 
 素材は[GungeeSpla氏](https://twitter.com/GungeeSpla)からお借りしました([ツイート](https://twitter.com/GungeeSpla/status/1618991301831307265))
 
-著作権はGungeeSpla氏に帰属します。
-Copyright (c) 2020 GungeeSpla
-
 ## 作者
 
 cn [Twitter](https://twitter.com/cn_iine)
