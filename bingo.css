@@ -4,10 +4,8 @@ body {
 }
 
 .contents-wrapper {
-    /* width: 37em; */
     margin: 0 auto;
     text-align: center;
-    /* padding: 2em 0; */
 }
 
 .create-card-button {
@@ -15,9 +13,9 @@ body {
     display: inline-block;
     margin: 1em 0;
     text-align: center;
-    border: .1em solid #fe2200;
+    border: .1em solid #1900fe;
     border-radius: .3em;
-    color: #fe2200;
+    color: #1900fe;
     font-weight: bold;
     padding: .4em .8em;
     cursor: pointer;
