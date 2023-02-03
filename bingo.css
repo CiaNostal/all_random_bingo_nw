@@ -6,7 +6,9 @@ body {
 
 .contents-wrapper {
     margin: 0 auto;
-    text-align: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .create-card-button {
@@ -31,6 +33,7 @@ body {
 }
 
 .setting-container {
+    text-align: center;
     box-sizing: border-box;
     width: 33em;
     display: inline-block;
@@ -70,11 +73,10 @@ body {
 .bingo-card-table td {
     width: 90px;
     height: 90px;
-    /* background-color: white; */
     background-color: #181818;
+    text-align: center;
 }
 
 .bingo-card-table td.hole {
-    /* background-color: rgba(255, 255, 0) !important; */
     background-color: #0bffe4 !important;
 }
