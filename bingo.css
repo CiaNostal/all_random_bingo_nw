@@ -1,6 +1,7 @@
 body {
     font-size: 1.1em;
     font-family: sans-serif;
+    background-color: #303030;
 }
 
 .contents-wrapper {
@@ -9,29 +10,48 @@ body {
 }
 
 .create-card-button {
-    box-sizing: border-box;
     display: inline-block;
+    box-sizing: border-box;
+    width: 15em;
     margin: 1em 0;
-    text-align: center;
-    border: .1em solid #1900fe;
-    border-radius: .3em;
-    color: #1900fe;
-    font-weight: bold;
     padding: .4em .8em;
+    font-size: 1.5em;
+    text-align: center;
+    color: #0bffe4;
+    font-weight: bold;
+    border: .1em solid #0bffe4;
+    border-radius: .3em;
     cursor: pointer;
+    box-shadow: 0px 0px .5em #0bffe4, inset 0px 0px .5em #0bffe4;
+}
+
+.selector {
+    width: 20.5em;
+    font-size: 1.1em;
+}
+
+.setting-container {
+    box-sizing: border-box;
+    width: 33em;
+    display: inline-block;
+    background-color: #181818;
+    border-radius: 0.7em;
+    padding-top: 1.5em;
+    margin-top: -2em;
 }
 
 .bingo-card-container {
     box-sizing: border-box;
-    width: 31em;
-    height: 39em;
-    padding: 169px 2px 2px 2px;
+    width: 34em;
+    height: 45em;
+    padding: 201px 2px 2px 2px;
     display: inline-block;
-    background-color: #fff;
+    /* background-color: #fff; */
     overflow: hidden;
-    background-image: url(background.png);
-    background-size: 39em auto;
-    background-position: center center;
+    background-image: url(background_nw2.png);
+    background-size: 43em auto;
+    background-position: 50% 80%;
+    background-repeat: no-repeat;
 }
 
 .bingo-card-table-wrapper {
@@ -50,9 +70,11 @@ body {
 .bingo-card-table td {
     width: 90px;
     height: 90px;
-    background-color: white;
+    /* background-color: white; */
+    background-color: #181818;
 }
 
 .bingo-card-table td.hole {
-    background-color: rgba(255, 255, 0) !important;
+    /* background-color: rgba(255, 255, 0) !important; */
+    background-color: #0bffe4 !important;
 }

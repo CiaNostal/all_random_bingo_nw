@@ -50,13 +50,13 @@
         dom.bingo_card_cells = dom.bingo_card_table.querySelectorAll('td');
         dom.bingo_card_name = document.querySelector('.bingo-card-name');
         dom.create_card_button = document.querySelector('.create-card-button');
-        dom.chromakey_setting = document.getElementById('chromakey');
+        // dom.chromakey_setting = document.getElementById('chromakey');
         for (let i = 0; i < bingo_card_cell_num; i++) {
             dom.bingo_card_cells[i].setAttribute('cell-index', i);
             dom.bingo_card_cells[i][click_event] = cell_click;
         }
         dom.create_card_button[click_event] = create_card_button_click;
-        dom.chromakey_setting["onclick"] = chromakey_setting_click;
+        // dom.chromakey_setting["onclick"] = chromakey_setting_click;
 
         if (!has_card_created) {
             return
@@ -78,9 +78,9 @@
         let bingo_card_tables = document.querySelectorAll(".bingo-card-table td");
         for (let i = 0; i < bingo_card_tables.length; i++) {
             if (checkbox.checked) {
-                bingo_card_tables[i].style.backgroundColor = "#00FF00";
+                bingo_card_tables[i].style.backgroundColor = "#00ff00";
             } else {
-                bingo_card_tables[i].style.backgroundColor = "white";
+                bingo_card_tables[i].style.backgroundColor = "#181818";
             };
         };
         let bingo_card_outer = document.querySelector(".bingo-card-container");
@@ -92,12 +92,12 @@
             // bingo_card_outer.style.backgroundImage = "";
             bingo_card_outer.style.backgroundSize = "0%";
         } else {
-            bingo_card_outer.style.width = "31em";
-            bingo_card_outer.style.height = "39em";
-            bingo_card_outer.style.paddingTop = "169px";
+            bingo_card_outer.style.width = "34em";
+            bingo_card_outer.style.height = "45em";
+            bingo_card_outer.style.paddingTop = "201px";
             bingo_card_outer.style.backgroundColor = "";
-            bingo_card_outer.style.backgroundImage = "url(background.png)";
-            bingo_card_outer.style.backgroundSize = "39em auto";
+            bingo_card_outer.style.backgroundImage = "url(background_nw2.png)";
+            bingo_card_outer.style.backgroundSize = "43em auto";
         };
     };
 
