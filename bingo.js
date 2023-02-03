@@ -73,33 +73,33 @@
     /*
      * chromakey_setting_click()
      */
-    function chromakey_setting_click() {
-        let checkbox = document.getElementById('chromakey');
-        let bingo_card_tables = document.querySelectorAll(".bingo-card-table td");
-        for (let i = 0; i < bingo_card_tables.length; i++) {
-            if (checkbox.checked) {
-                bingo_card_tables[i].style.backgroundColor = "#00ff00";
-            } else {
-                bingo_card_tables[i].style.backgroundColor = "#181818";
-            };
-        };
-        let bingo_card_outer = document.querySelector(".bingo-card-container");
-        if (checkbox.checked) {
-            bingo_card_outer.style.width = "28em";
-            bingo_card_outer.style.height = "28.8em";
-            bingo_card_outer.style.paddingTop = "2px";
-            bingo_card_outer.style.backgroundColor = "#dddbdb";
-            // bingo_card_outer.style.backgroundImage = "";
-            bingo_card_outer.style.backgroundSize = "0%";
-        } else {
-            bingo_card_outer.style.width = "34em";
-            bingo_card_outer.style.height = "45em";
-            bingo_card_outer.style.paddingTop = "201px";
-            bingo_card_outer.style.backgroundColor = "";
-            bingo_card_outer.style.backgroundImage = "url(background_nw2.png)";
-            bingo_card_outer.style.backgroundSize = "43em auto";
-        };
-    };
+    // function chromakey_setting_click() {
+    //     let checkbox = document.getElementById('chromakey');
+    //     let bingo_card_tables = document.querySelectorAll(".bingo-card-table td");
+    //     for (let i = 0; i < bingo_card_tables.length; i++) {
+    //         if (checkbox.checked) {
+    //             bingo_card_tables[i].style.backgroundColor = "#00ff00";
+    //         } else {
+    //             bingo_card_tables[i].style.backgroundColor = "#181818";
+    //         };
+    //     };
+    //     let bingo_card_outer = document.querySelector(".bingo-card-container");
+    //     if (checkbox.checked) {
+    //         bingo_card_outer.style.width = "28em";
+    //         bingo_card_outer.style.height = "28.8em";
+    //         bingo_card_outer.style.paddingTop = "2px";
+    //         bingo_card_outer.style.backgroundColor = "#dddbdb";
+    //         // bingo_card_outer.style.backgroundImage = "";
+    //         bingo_card_outer.style.backgroundSize = "0%";
+    //     } else {
+    //         bingo_card_outer.style.width = "34em";
+    //         bingo_card_outer.style.height = "45em";
+    //         bingo_card_outer.style.paddingTop = "201px";
+    //         bingo_card_outer.style.backgroundColor = "";
+    //         bingo_card_outer.style.backgroundImage = "url(background_nw2.png)";
+    //         bingo_card_outer.style.backgroundSize = "43em auto";
+    //     };
+    // };
 
     /*
      * create_card_button_click()
