@@ -55,14 +55,11 @@
         dom.bingo_card_cells = dom.bingo_card_table.querySelectorAll('td');
         dom.bingo_card_name = document.querySelector('.bingo-card-name');
         dom.create_card_button = document.querySelector('.create-card-button');
-        // dom.chromakey_setting = document.getElementById('chromakey');
         for (let i = 0; i < bingo_card_cell_num; i++) {
             dom.bingo_card_cells[i].setAttribute('cell-index', i);
             dom.bingo_card_cells[i][click_event] = cell_click;
-            // dom.bingo_card_cells[i].addEventListener(click_event, cell_click);
         }
         dom.create_card_button[click_event] = create_card_button_click;
-        // dom.chromakey_setting["onclick"] = chromakey_setting_click;
 
         if (!has_card_created) {
             return
@@ -86,7 +83,6 @@
         console.log("bingo_code : " + bingo_code);
 
         let xors = new Xors(bingo_code);
-
         card_holes = []; // holesは空(= 全false)
 
         card = create_card(xors);
@@ -98,8 +94,6 @@
 
         has_card_created = true;
         save_storage();
-        // console.log(card)
-        // console.log(card_holes)
     };
 
     /* 
@@ -164,10 +158,7 @@
             this.classList.remove('hole');
         };
         save_storage();
-
     };
-
-
 
     /* 
      * save_storage()
