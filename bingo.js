@@ -24,6 +24,7 @@
     const storage_key = "salmonrun_all_random_nw"
     let dom = {};
     window.card_holes = [];
+    window.bingo_code = undefined;
     window.has_card_created = false;
     window.click_event = 'ontouchend' in window ? 'ontouchend' : 'onclick';
     window.save_variables = [
@@ -46,6 +47,7 @@
         console.log(window.card_holes);
         console.log("kuma_weapon : " + kuma_weapon);
         console.log("bingo_code : " + bingo_code);
+
         console.log("has_card_created : " + has_card_created);
 
         document.getElementById('kuma-weapon').value = kuma_weapon;
