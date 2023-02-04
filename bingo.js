@@ -144,9 +144,9 @@
      * cell_click()
      */
     function cell_click() {
-        if (!has_card_created) {
-            return;
-        }
+        // if (!has_card_created) {
+        //     return;
+        // }
         let cell_index = parseInt(this.getAttribute('cell-index'));
         console.log("click #" + cell_index);
         let is_hole = card_holes[cell_index];
