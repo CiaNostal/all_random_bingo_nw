@@ -1,3 +1,7 @@
+html {
+    touch-action: manipulation;
+  }
+
 body {
     font-size: 1.1em;
     font-family: sans-serif;
@@ -49,7 +53,6 @@ body {
 
 .bingo-card-container {
     display: inline-block;
-
     box-sizing: border-box;
     width: 34em;
     height: 45em;
