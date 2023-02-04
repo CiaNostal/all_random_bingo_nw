@@ -23,6 +23,7 @@
 
     const storage_key = "salmonrun_all_random_nw"
     let dom = {};
+    window.card = undefined;
     window.card_holes = [];
     window.bingo_code = undefined;
     window.has_card_created = false;
@@ -164,8 +165,8 @@
      * save_storage()
      */
     function save_storage() {
-        console.log(card);
-        console.log(card_holes);
+        console.log(window.card);
+        console.log(window.card_holes);
 
         let save_data_obj = {};
         window.save_variables.map(var_name => {
