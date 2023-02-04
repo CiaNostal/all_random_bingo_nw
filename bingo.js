@@ -29,7 +29,7 @@
     window.save_variables = [
         'card',
         'card_holes',
-        'player_code',
+        'bingo_code',
         'kuma_weapon',
         "has_card_created"
     ];
@@ -44,7 +44,10 @@
         }
         console.log(window.card);
         console.log(window.card_holes);
-        console.log("kuma_weapon is " + kuma_weapon);
+        console.log("kuma_weapon : " + kuma_weapon);
+        console.log("bingo_code : " + bingo_code);
+        console.log("has_card_created : " + has_card_created);
+
         document.getElementById('kuma-weapon').value = kuma_weapon;
         dom.bingo_card_table = document.querySelector('.bingo-card-table-wrapper table');
         dom.bingo_card_cells = dom.bingo_card_table.querySelectorAll('td');
@@ -54,6 +57,7 @@
         for (let i = 0; i < bingo_card_cell_num; i++) {
             dom.bingo_card_cells[i].setAttribute('cell-index', i);
             dom.bingo_card_cells[i][click_event] = cell_click;
+            // dom.bingo_card_cells[i].addEventListener(click_event, cell_click);
         }
         dom.create_card_button[click_event] = create_card_button_click;
         // dom.chromakey_setting["onclick"] = chromakey_setting_click;
@@ -71,50 +75,21 @@
     };
 
     /*
-     * chromakey_setting_click()
-     */
-    // function chromakey_setting_click() {
-    //     let checkbox = document.getElementById('chromakey');
-    //     let bingo_card_tables = document.querySelectorAll(".bingo-card-table td");
-    //     for (let i = 0; i < bingo_card_tables.length; i++) {
-    //         if (checkbox.checked) {
-    //             bingo_card_tables[i].style.backgroundColor = "#00ff00";
-    //         } else {
-    //             bingo_card_tables[i].style.backgroundColor = "#181818";
-    //         };
-    //     };
-    //     let bingo_card_outer = document.querySelector(".bingo-card-container");
-    //     if (checkbox.checked) {
-    //         bingo_card_outer.style.width = "28em";
-    //         bingo_card_outer.style.height = "28.8em";
-    //         bingo_card_outer.style.paddingTop = "2px";
-    //         bingo_card_outer.style.backgroundColor = "#dddbdb";
-    //         // bingo_card_outer.style.backgroundImage = "";
-    //         bingo_card_outer.style.backgroundSize = "0%";
-    //     } else {
-    //         bingo_card_outer.style.width = "34em";
-    //         bingo_card_outer.style.height = "45em";
-    //         bingo_card_outer.style.paddingTop = "201px";
-    //         bingo_card_outer.style.backgroundColor = "";
-    //         bingo_card_outer.style.backgroundImage = "url(background_nw2.png)";
-    //         bingo_card_outer.style.backgroundSize = "43em auto";
-    //     };
-    // };
-
-    /*
      * create_card_button_click()
      */
     function create_card_button_click() {
-        is_load = false; //多分
         console.log('init bingo card');
 
-        player_code = new Date().getTime();//player_codeを適切な変数名になおす
-        let xors = new Xors(player_code);
+        bingo_code = new Date().getTime(); //bingo生成のためのシード値
+        console.log("bingo_code : " + bingo_code);
+
+        let xors = new Xors(bingo_code);
+
+        card_holes = []; // holesは空(= 全false)
 
         card = create_card(xors);
         for (let i = 0; i < bingo_card_cell_num; i++) {
             dom.bingo_card_cells[i].classList.remove('hole');
-            // dom.bingo_card_cells[i].classList.remove('reach');
         };
 
         render_card(card);
@@ -177,6 +152,7 @@
             return;
         }
         let cell_index = parseInt(this.getAttribute('cell-index'));
+        console.log("click #" + cell_index);
         let is_hole = card_holes[cell_index];
         if (!is_hole) {
             card_holes[cell_index] = true;
@@ -186,7 +162,7 @@
             this.classList.remove('hole');
         };
         save_storage();
-        // console.log(card_holes)
+
     };
 
 
@@ -195,6 +171,9 @@
      * save_storage()
      */
     function save_storage() {
+        console.log(card);
+        console.log(card_holes);
+
         let save_data_obj = {};
         window.save_variables.map(var_name => {
             save_data_obj[var_name] = window[var_name];

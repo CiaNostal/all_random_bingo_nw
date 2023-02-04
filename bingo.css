@@ -5,6 +5,7 @@ body {
 }
 
 .contents-wrapper {
+    display: inline-block;
     margin: 0 auto;
     display: flex;
     flex-flow: column;
@@ -33,10 +34,10 @@ body {
 }
 
 .setting-container {
+    display: inline-block;
     text-align: center;
     box-sizing: border-box;
     width: 33em;
-    display: inline-block;
     background-color: #181818;
     border-radius: 0.7em;
     padding-top: 1.5em;
@@ -44,11 +45,12 @@ body {
 }
 
 .bingo-card-container {
+    display: inline-block;
+
     box-sizing: border-box;
     width: 34em;
     height: 45em;
     padding: 201px 2px 2px 2px;
-    display: inline-block;
     /* background-color: #fff; */
     overflow: hidden;
     background-image: url(background_nw2.png);
