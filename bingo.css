@@ -1,12 +1,26 @@
 html {
     touch-action: manipulation;
-  }
+}
 
 body {
     font-size: 1.1em;
     font-family: sans-serif;
     background-color: #303030;
+
+    /* iOS Safari */
+    -webkit-touch-callout: none;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Konqueror HTML */
+    -khtml-user-select: none;
+    /* Firefox */
+    -moz-user-select: none;
+    /* Internet Explorer/Edge */
+    -ms-user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
     user-select: none;
+
 }
 
 .contents-wrapper {
@@ -88,5 +102,5 @@ body {
 }
 
 .bingo-card-table td img {
-	-webkit-user-drag: none;
+    -webkit-user-drag: none;
 }
