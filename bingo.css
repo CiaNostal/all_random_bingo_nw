@@ -59,7 +59,7 @@ body {
     width: 33em;
     background-color: #181818;
     border-radius: 0.7em;
-    padding-top: 1.5em;
+    /* padding-top: 1.5em; */
     margin-top: -2em;
 }
 
@@ -93,14 +93,17 @@ body {
 .bingo-card-table td {
     width: 90px;
     height: 90px;
-    background-color: #181818;
+    background-color:#181818;    
     text-align: center;
 }
 
-.bingo-card-table td.hole {
+.bingo-card-table td.is_punched {
     background-color: #0bffe4 !important;
 }
 
 .bingo-card-table td img {
     -webkit-user-drag: none;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
 }

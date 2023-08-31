@@ -19,17 +19,19 @@ const normal_weapon_img_array = [
 ];
 const normal_weapon_num = normal_weapon_img_array.length - 1;
 const center_str = 'KUMA';
+const kuma_weapon = "grizz";
+const hatena_mark = "10000";
 
 const storage_key = "salmonrun_all_random_nw"
 let dom = {};
 window.card = undefined;
-window.card_holes = [];
+window.is_puncued_array = [];
 window.bingo_code = undefined;
 window.has_card_created = false;
 window.click_event = 'ontouchend' in window ? 'ontouchend' : 'onclick';
 window.save_variables = [
     'card',
-    'card_holes',
+    'is_puncued_array',
     'bingo_code',
     'kuma_weapon',
     "has_card_created"
@@ -37,20 +39,13 @@ window.save_variables = [
 
 window.onload = () => {
     load_storage();
-    let kuma_weapon;
-    if (typeof window.kuma_weapon === 'undefined') {
-        kuma_weapon = "9000";
-    } else {
-        kuma_weapon = window.kuma_weapon;
-    }
     console.log(window.card);
-    console.log(window.card_holes);
+    console.log(window.is_puncued_array);
     console.log("kuma_weapon : " + kuma_weapon);
     console.log("bingo_code : " + bingo_code);
     console.log("has_card_created : " + has_card_created);
     console.log(window.click_event);
 
-    document.getElementById('kuma-weapon').value = kuma_weapon;
     dom.bingo_card_table = document.querySelector('.bingo-card-table-wrapper table');
     dom.bingo_card_cells = dom.bingo_card_table.querySelectorAll('td');
     dom.bingo_card_name = document.querySelector('.bingo-card-name');
@@ -62,12 +57,13 @@ window.onload = () => {
     dom.create_card_button[click_event] = create_card_button_click;
 
     if (!has_card_created) {
-        return
+        return;
     };
-    render_card(card);
+
+    render_card(window.card);
     for (let i = 0; i < card.length; i++) {
-        if (window.card_holes[i]) {
-            dom.bingo_card_cells[i].classList.add('hole');
+        if (window.is_puncued_array[i]) {
+            dom.bingo_card_cells[i].classList.add('is_punched');
         }
     };
     save_storage();
@@ -83,11 +79,11 @@ function create_card_button_click() {
     console.log("bingo_code : " + bingo_code);
 
     let xors = new Xors(bingo_code);
-    card_holes = []; // holesは空(= 全false)
+    is_puncued_array = []; // holesは空(= 全false)
 
     card = create_card(xors);
     for (let i = 0; i < bingo_card_cell_num; i++) {
-        dom.bingo_card_cells[i].classList.remove('hole');
+        dom.bingo_card_cells[i].classList.remove('is_punched');
     };
 
     render_card(card);
@@ -105,34 +101,34 @@ function create_card(xors) {
     for (let i = 0; i <= normal_weapon_num; i++) {
         weapons.push(i);
     };
-    let new_card = [];
+    let card = [];
     for (let i = 0; i < bingo_card_cell_num; i++) {
         //weaponsから1つ選びだしたら(weapon)、そのブキをweaponsから削除する。
         //同じことを繰り返す
         let r = Math.floor(xors.random() * weapons.length);
         let weapon = weapons[r];
         weapons.splice(r, 1);
-        new_card[i] = weapon;
+        card[i] = weapon;
     };
-    dom.bingo_card_cells[bingo_card_center_index].classList.add('kuma');
-    new_card[bingo_card_center_index] = center_str;
-    return new_card;
+    card[bingo_card_center_index] = center_str;
+    return card;
 };
-
 
 /* 
  * render_card(_card)
  */
 function render_card(_card) {
+    // 中央セルをにクマクラスを指定
+    dom.bingo_card_cells[bingo_card_center_index].classList.add('kuma');
+    // カードをレンダー
     for (let i = 0; i < _card.length; i++) {
         let str = _card[i];
         // 削除
         dom.bingo_card_cells[i].querySelectorAll('*').forEach(n => n.remove());
         let img_element = document.createElement('img');
         img_element.src = "./weapons_nw/" + normal_weapon_img_array[Number(str)] + ".png";
-        img_element.width = 80;
+        // img_element.width = 80;
         if (str == center_str) {
-            kuma_weapon = document.getElementById("kuma-weapon").value;
             img_element.src = "./weapons_nw/" + kuma_weapon + ".png";
         };
         dom.bingo_card_cells[i].appendChild(img_element);
@@ -149,13 +145,13 @@ function cell_click() {
     }
     let cell_index = parseInt(this.getAttribute('cell-index'));
     console.log("click #" + cell_index);
-    let is_hole = card_holes[cell_index];
-    if (!is_hole) {
-        card_holes[cell_index] = true;
-        this.classList.add('hole');
+    let is_punched = is_puncued_array[cell_index];
+    if (!is_punched) {
+        is_puncued_array[cell_index] = true;
+        this.classList.add('is_punched');
     } else {
-        card_holes[cell_index] = false;
-        this.classList.remove('hole');
+        is_puncued_array[cell_index] = false;
+        this.classList.remove('is_punched');
     };
     save_storage();
 };
@@ -165,14 +161,13 @@ function cell_click() {
  */
 function save_storage() {
     console.log(window.card);
-    console.log(window.card_holes);
+    console.log(window.is_puncued_array);
 
     let save_data_obj = {};
     window.save_variables.map(var_name => {
         save_data_obj[var_name] = window[var_name];
     });
     let json_str = JSON.stringify(save_data_obj);
-    //console.log(json_str);
     localStorage.setItem(storage_key, json_str);
     console.log('-- save variables');
 };
@@ -185,7 +180,6 @@ function load_storage() {
     if (json_str !== null) {
         console.log('-- storage data exist');
         console.log('-- merging storage variables to window');
-        //console.log(json_str);
         let save_data_obj = JSON.parse(json_str);
         window.save_variables.map(var_name => {
             if (typeof save_data_obj[var_name] !== 'undefined') {
